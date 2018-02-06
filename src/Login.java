@@ -136,7 +136,9 @@ private Main main = new Main(); // llamamos a la clase Main
      
        // verificar el arreglo
        if(r!=-1){
-       JOptionPane.showMessageDialog(this, "Menu Principal!");
+       Menu toMenu = new Menu();
+       toMenu.setVisible(true);
+       this.dispose();
        }    
        
        else{
