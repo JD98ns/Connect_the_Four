@@ -158,7 +158,7 @@ public class Register extends javax.swing.JFrame {
         if (fieldUser.getText().equals("") || fieldPassword.equals("")) {
             JOptionPane.showMessageDialog(this, "Llene los campos!");           // esta condicion verifica si hay espacios vacios en los fields
                                      }
-        int r=ClassAccount.searchUser(fieldUser.getText());                     // se llama el metodo buscar
+        int r=ClassAccount.searchUser(fieldUser.getText());                     // se llama el metodo buscar, para ello se crea un int r
         // verificamos si ya existe el user
            if(r!=-1){
                JOptionPane.showMessageDialog(this, "User already exists!");
@@ -177,8 +177,10 @@ public class Register extends javax.swing.JFrame {
          System.out.print("\nUsernames: "+player.get(x).getUsername());
          System.out.print("\nPassword: "+player.get(x).getPassword());
          x++;
+         
        }
       
+           
       
       
         
