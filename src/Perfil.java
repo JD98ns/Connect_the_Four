@@ -75,13 +75,13 @@ public class Perfil extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(Back)
-                .addGap(42, 42, 42)
+                .addGap(58, 58, 58)
                 .addComponent(jButton1)
-                .addGap(45, 45, 45)
+                .addGap(80, 80, 80)
                 .addComponent(jButton2)
-                .addGap(45, 45, 45)
+                .addGap(81, 81, 81)
                 .addComponent(jButton3)
-                .addContainerGap(255, Short.MAX_VALUE))
+                .addContainerGap(168, Short.MAX_VALUE))
         );
 
         pack();
@@ -97,6 +97,9 @@ public class Perfil extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        E_Perfil toEditar = new E_Perfil();
+        toEditar.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

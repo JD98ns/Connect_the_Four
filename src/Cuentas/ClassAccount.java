@@ -18,7 +18,6 @@ public class ClassAccount {
     }
     
     // buscar pos
-    
     public static int search(String user, String pass){
         for (int i = 0; i < player.size(); i++) {
             if (player.get(i).getUsername().equals(user) && player.get(i).getPassword().equals(pass)) { 
