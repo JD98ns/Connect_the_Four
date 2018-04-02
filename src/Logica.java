@@ -8,6 +8,7 @@ import static Cuentas.Accounts.player;
 
 public class Logica {
     
+    static ClassAccount ok = new ClassAccount();
     
     final int boardWidth=7;
     final int boardHeight=7;
@@ -22,7 +23,9 @@ public class Logica {
     public static void main(String args[]){
         Scanner jd = new Scanner(System.in);
         Logica c4=new Logica();
-        String loggedUser = "JD";
+        ClassAccount ca = new ClassAccount(); 
+        Connect_Four cf = new Connect_Four();
+        
         BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Bienvenido a Conncet4!!!");
         System.out.println("Ingrese segundo jugador: ");
@@ -38,15 +41,22 @@ public class Logica {
         while(true){
             int column=0;
             //PLAYER 1.
+            
+           
             while(true){
-            System.out.println("\n\nPlayer 1 juega!:");
+            System.out.println("\n\nPlayer "+ok.loggedUser+" juega!:");
             column=jd.nextInt();
             
-            if(column==-5){System.out.println("RETIRO! \nGana "+jugador2); break;}
+            if(column==-5){System.out.println("RETIRO! \nGana "+jugador2); Connect_Four.Menu_Principal();}
                 if(c4.isPlayable(column)){
                     if(c4.playMove(column, 1)){
                         c4.printBoard();
                         System.out.println("\n\nPlayer 1 gana!!!");
+                        ClassAccount c1 = new ClassAccount();
+                        
+                        
+                        
+                        // mandar al score y ultimas partidas
                         break outer;
                     }
                     break;
@@ -61,11 +71,13 @@ public class Logica {
             
             //System.out.println("\n\n"+jugador2+" juega!:");
             column=jd.nextInt();
-            if(column==-5){System.out.println("RETIRO! \nGana "+loggedUser); break;}
+            if(column==-5){System.out.println("RETIRO! \nGana Jugador "+ok.loggedUser); Connect_Four.Menu_Principal();}
                 if(c4.isPlayable(column)){
                     if(c4.playMove(column, 2)){
                         //c4.printBoard();
                         System.out.println("\n\nPlayer 2 gana!!!");
+                         ClassAccount c1 = new ClassAccount();
+                         
                         break outer;
                     }
                     break;

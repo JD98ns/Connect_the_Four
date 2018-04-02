@@ -2,17 +2,17 @@ import java.util.*;
 import Cuentas.Accounts;
 import Cuentas.ClassAccount;
 import static Cuentas.Accounts.player;
-        
+
 public class Connect_Four {
-    static String loggedUser;
+
     private static String[] args;
     Logica toLogica = new Logica(); // llamamos al tablero
-    
+    static ClassAccount ok = new ClassAccount();
     public static void main(String[] args) {
-      
+     ClassAccount ca = new ClassAccount();   
      Scanner ingreso = new Scanner(System.in);   
      boolean salir = true; int op;   String fieldUser=""; String fieldPass="";
-     
+
      
        while(salir!=false){
            System.out.print("\n1 - Login \n2 - Crear Usuario \n3 - Salir \n\tIngrese opcion: ");
@@ -20,15 +20,20 @@ public class Connect_Four {
            
            switch(op){
                case 1:
+                         
                          int r = ClassAccount.search(fieldUser,fieldPass); // llamamos al meetodo search 
                          
                          System.out.print("\nIngrese usuario: ");
                          fieldUser=ingreso.next();
+                         ok.loggedUser=fieldUser;
                          System.out.print("\nIngrese password: ");
                          fieldPass=ingreso.next();
                          
-                         loggedUser = fieldUser;
+      
                          
+                         
+                       
+
                          
                         // verificar el arreglo
                         if(r!=-1){
@@ -61,7 +66,7 @@ public class Connect_Four {
                                             }
 
                                        else{
-                                        ClassAccount agregar = new ClassAccount(fieldUser, fieldPass);
+                                        ClassAccount agregar = new ClassAccount(fieldUser, fieldPass, placeholder,0);
                                         player.add(agregar);   // agregamos el user y password al arraylist
                                            System.out.println("\nSuccess!");
             
@@ -96,9 +101,9 @@ public class Connect_Four {
                 break;
             case 2:
                 System.out.println("\n**** Ranking ****");
-                System.out.println("\nNombre \tUsuario \tPuntos \n____________________________________");
-                System.out.println("\n1- Marvin \tMrd \t8");
-                System.out.println("\n2- Raul \tRps \t7"); System.out.println("\n2- Marcia \tMarciabae \t5"); System.out.println("\n4- Fred \tFredtheman \t3"); System.out.println("\n5- Brian \tBadB \t-1");
+               ClassAccount cl = new ClassAccount();
+                cl.ScoreBoard();
+                System.out.println("");
                 
                 break;
             case 3:
@@ -108,14 +113,17 @@ public class Connect_Four {
                 if(op==1){Editar_Perfil(); }
                         
                 else if(op==2){
-                    System.out.println("\n1- Gano vs Rps \n2-Perdio vs BadB por RETIRO \n3- Gano vs Mrd \n4- Perdi vs Rps \n5- Empate vs Fredtheman");
+                    
                          }
                 else if(op==3){
+
+                    System.out.println("Usuario Logged: "+ok.loggedUser );
                     System.out.println("Esta seguro de eliminar la cuenta?");
                     String eliminar = ingreso.next().toLowerCase();
                     
                      if(eliminar.equals("si"))
-                         System.out.println("Cuenta eliminada!");
+                         
+                         ClassAccount.RemoveAccount(ok.loggedUser);
                          
                          main(args);
                               }
@@ -137,39 +145,18 @@ public class Connect_Four {
     // Metodo Editar Perfil
     public static void Editar_Perfil(){
         Scanner ingreso = new Scanner (System.in);
-        int op;
-        System.out.println("\n1-Cambiar nombre \n2-Cambiar User \n3-Cambiar Password \n4-Regresar           \n\tIngrese Opcion");
-        op=ingreso.nextInt();
+        System.out.println("*** Editar Perfil ***");
         
-        switch(op){
-            case 1:
-                System.out.println("Ingrese el nuevo nombre: ");
-                String name = ingreso.next();
-                
-                break;
-            case 2:
-                System.out.println("Ingrese el nuevo user");
-                String user = ingreso.next();
-                break;
-            case 3:
-                System.out.println("Ingrese el nuevo password: ");
-                String password = ingreso.next();
-                break;
-            case 4:
-                
-                break;
-            default:
-                System.out.println("No es una opcion valida!");
-                break;
-                  }
+        System.out.print("\nIngrese nuevo username: "); String nUser = ingreso.next();
+        System.out.print("\nIngrese nuevo nombre: "); String nName = ingreso.next();
+        System.out.print("\nIngrese nuevo password: "); String nPassword = ingreso.next();
         
-        
-                                      } // fin del metodo Editar  Perfil    
-    
+        ListIterator<ClassAccount> iterator = player.listIterator();//iterator
 
-    public static void Usuario_Logged(){
-       
-                                       }
+        
+
+                                      } // fin del metodo Editar  Perfil    
+
     
     
 }// fin del class
